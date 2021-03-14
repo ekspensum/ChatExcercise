@@ -14,12 +14,15 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		// TODO Auto-generated method stub
 		WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
+		registry.addEndpoint("/gs-guide-websocket").withSockJS();
 	}
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		// TODO Auto-generated method stub
 		WebSocketMessageBrokerConfigurer.super.configureMessageBroker(registry);
+		registry.enableSimpleBroker("/topic");
+		registry.setApplicationDestinationPrefixes("/app");
 	}
 
 	
